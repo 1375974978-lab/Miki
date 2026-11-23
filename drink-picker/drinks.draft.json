@@ -1,0 +1,1682 @@
+{
+  "status": "editorial-example",
+  "notice": "人工编写的演示饮品库，含示例组合名；不是品牌在售菜单。名称、价格、配料与供应情况以门店为准。",
+  "flavorTags": [
+    "咖啡香",
+    "茶香",
+    "奶香",
+    "果香",
+    "花香",
+    "椰香",
+    "酸甜",
+    "清爽",
+    "浓郁",
+    "甜品感"
+  ],
+  "needTags": [
+    "可选无糖",
+    "可选少糖",
+    "适合热饮",
+    "适合冰饮",
+    "乳糖友好",
+    "少咖啡因",
+    "奶盖款",
+    "沙冰"
+  ],
+  "drinks": [
+    {
+      "id": "starbucks-americano",
+      "name": "美式咖啡",
+      "brand": "星巴克",
+      "category": "咖啡",
+      "priceMin": 27,
+      "priceMax": 38,
+      "praise": "咖啡香直接、口感利落，适合想喝得简单的时候。",
+      "caution": "不加奶时苦感明显，怕苦可先从冰饮试起。",
+      "addOnSuggestion": "推荐原配；想柔和一些可询问是否能加燕麦奶。",
+      "flavors": [
+        "咖啡香",
+        "清爽"
+      ],
+      "needs": [
+        "可选无糖",
+        "适合热饮",
+        "适合冰饮",
+        "乳糖友好"
+      ]
+    },
+    {
+      "id": "starbucks-cold-brew",
+      "name": "冷萃咖啡",
+      "brand": "星巴克",
+      "category": "咖啡",
+      "priceMin": 30,
+      "priceMax": 42,
+      "praise": "冰饮顺口，适合偏爱纯咖啡风味的人。",
+      "caution": "咖啡感仍较强，晚间饮用前留意咖啡因。",
+      "addOnSuggestion": "推荐先喝原配；可询问是否支持少量燕麦奶。",
+      "flavors": [
+        "咖啡香",
+        "清爽"
+      ],
+      "needs": [
+        "可选无糖",
+        "适合冰饮",
+        "乳糖友好"
+      ]
+    },
+    {
+      "id": "starbucks-caramel-frappuccino",
+      "name": "焦糖咖啡星冰乐",
+      "brand": "星巴克",
+      "category": "咖啡",
+      "priceMin": 34,
+      "priceMax": 45,
+      "praise": "焦糖与冰沙口感偏甜品，适合想要一杯有满足感的饮品。",
+      "caution": "甜感和乳感都较突出，不适合想喝清爽纯咖啡的人。",
+      "addOnSuggestion": "可询问是否支持少酱；推荐先尝试原配。",
+      "flavors": [
+        "咖啡香",
+        "奶香",
+        "甜品感",
+        "浓郁"
+      ],
+      "needs": [
+        "适合冰饮",
+        "沙冰"
+      ]
+    },
+    {
+      "id": "heytea-grape",
+      "name": "多肉葡萄",
+      "brand": "喜茶",
+      "category": "果茶",
+      "priceMin": 22,
+      "priceMax": 30,
+      "praise": "葡萄果香饱满，冰饮时更有清爽感。",
+      "caution": "果肉与茶底的酸甜会随批次变化，怕酸可留意。",
+      "addOnSuggestion": "推荐原配；偏爱口感层次可询问脆波波。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "heytea-mango-cheese",
+      "name": "芝芝芒芒",
+      "brand": "喜茶",
+      "category": "果茶",
+      "priceMin": 25,
+      "priceMax": 33,
+      "praise": "芒果香与奶盖搭配，口感像一杯轻盈的水果甜点。",
+      "caution": "奶盖会增加乳感与厚重度，想喝纯果茶可避开。",
+      "addOnSuggestion": "推荐先喝原配；可询问是否支持少奶盖。",
+      "flavors": [
+        "果香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮",
+        "奶盖款"
+      ]
+    },
+    {
+      "id": "mixue-lemon-water",
+      "name": "柠檬水",
+      "brand": "蜜雪冰城",
+      "category": "果茶",
+      "priceMin": 4,
+      "priceMax": 8,
+      "praise": "柠檬酸香醒口，是预算友好的清爽选择。",
+      "caution": "酸度较明显，且默认甜度可能不适合控糖偏好。",
+      "addOnSuggestion": "推荐原配；可询问是否支持少糖。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮",
+        "乳糖友好",
+        "少咖啡因"
+      ]
+    },
+    {
+      "id": "mixue-pearl-milk-tea",
+      "name": "珍珠奶茶",
+      "brand": "蜜雪冰城",
+      "category": "奶茶",
+      "priceMin": 7,
+      "priceMax": 12,
+      "praise": "茶奶味直观、珍珠有嚼感，适合想喝经典款的时候。",
+      "caution": "珍珠会增加饱腹感，怕甜可先询问甜度调整。",
+      "addOnSuggestion": "已有珍珠，推荐原配；可询问少珍珠。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chagee-boya",
+      "name": "伯牙绝弦",
+      "brand": "霸王茶姬",
+      "category": "奶茶",
+      "priceMin": 16,
+      "priceMax": 24,
+      "praise": "茉莉茶香清晰，奶感不会完全盖住茶味。",
+      "caution": "偏爱浓厚甜奶茶的人可能觉得茶感偏突出。",
+      "addOnSuggestion": "推荐先喝原配，保留茶香层次。",
+      "flavors": [
+        "茶香",
+        "花香",
+        "奶香",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chagee-guifuxiang",
+      "name": "桂馥兰香",
+      "brand": "霸王茶姬",
+      "category": "奶茶",
+      "priceMin": 17,
+      "priceMax": 26,
+      "praise": "花香和茶香层次分明，适合喜欢清雅奶茶的人。",
+      "caution": "对花香敏感的人可能觉得香气偏明显。",
+      "addOnSuggestion": "推荐原配；不建议加重口味配料盖住茶香。",
+      "flavors": [
+        "茶香",
+        "花香",
+        "奶香"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chabaidao-jasmine-milk-green",
+      "name": "茉莉奶绿",
+      "brand": "茶百道",
+      "category": "奶茶",
+      "priceMin": 13,
+      "priceMax": 19,
+      "praise": "茉莉香气轻，茶奶平衡，适合作为日常口味。",
+      "caution": "想要强烈果味或厚奶感的人可能觉得它偏淡。",
+      "addOnSuggestion": "可询问加珍珠，增加咀嚼感。",
+      "flavors": [
+        "茶香",
+        "花香",
+        "奶香"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chabaidao-mango-pomelo",
+      "name": "杨枝甘露",
+      "brand": "茶百道",
+      "category": "果茶",
+      "priceMin": 18,
+      "priceMax": 25,
+      "praise": "芒果与柚子带来酸甜和果肉口感，像可喝的甜点。",
+      "caution": "整体偏浓稠，不适合想喝清透茶饮的人。",
+      "addOnSuggestion": "推荐原配；可询问少西米以减轻口感。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "甜品感",
+        "浓郁"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "guming-classic-milk-tea",
+      "name": "古茗奶茶",
+      "brand": "古茗",
+      "category": "奶茶",
+      "priceMin": 10,
+      "priceMax": 16,
+      "praise": "茶奶比例朴实，适合想喝一杯基础奶茶的时候。",
+      "caution": "风味比较经典，追求强烈新奇口味的人可能觉得平稳。",
+      "addOnSuggestion": "可询问加珍珠或布丁，按喜好增加口感。",
+      "flavors": [
+        "茶香",
+        "奶香"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "guming-cheese-grape",
+      "name": "超 A 芝士葡萄",
+      "brand": "古茗",
+      "category": "果茶",
+      "priceMin": 18,
+      "priceMax": 25,
+      "praise": "葡萄果香搭配芝士顶，喝起来有明显层次。",
+      "caution": "奶盖与果味叠加偏厚重，乳糖敏感者应留意。",
+      "addOnSuggestion": "推荐原配；可询问少芝士顶。",
+      "flavors": [
+        "果香",
+        "奶香",
+        "酸甜",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮",
+        "奶盖款"
+      ]
+    },
+    {
+      "id": "yidiandian-four-seasons-milk-green",
+      "name": "四季春奶青",
+      "brand": "一点点",
+      "category": "奶茶",
+      "priceMin": 14,
+      "priceMax": 22,
+      "praise": "茶底清香，奶味适中，适合偏爱茶感的奶茶党。",
+      "caution": "加料太多容易掩盖原本清淡的茶香。",
+      "addOnSuggestion": "可询问加波霸，推荐先从少量开始。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "yidiandian-boba-milk-tea",
+      "name": "波霸奶茶",
+      "brand": "一点点",
+      "category": "奶茶",
+      "priceMin": 15,
+      "priceMax": 23,
+      "praise": "波霸的嚼感与奶茶搭配，是口感明确的经典选择。",
+      "caution": "波霸会让整杯更有饱腹感，喝前可考虑份量。",
+      "addOnSuggestion": "已有波霸，推荐原配；可询问少波霸。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "nayuki-orange",
+      "name": "霸气橙子",
+      "brand": "奈雪的茶",
+      "category": "果茶",
+      "priceMin": 22,
+      "priceMax": 32,
+      "praise": "橙香明亮，果味足，适合想喝清爽大杯果茶的时候。",
+      "caution": "柑橘酸感比较明显，胃口偏敏感时可避开。",
+      "addOnSuggestion": "推荐原配，先感受果香和茶底。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "nayuki-strawberry-cheese",
+      "name": "霸气芝士草莓",
+      "brand": "奈雪的茶",
+      "category": "果茶",
+      "priceMin": 25,
+      "priceMax": 35,
+      "praise": "草莓酸甜与芝士顶相衬，适合喜欢水果甜品感的人。",
+      "caution": "奶盖与果肉让口感偏厚重，不适合追求清透的人。",
+      "addOnSuggestion": "推荐原配；可询问少芝士顶。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮",
+        "奶盖款"
+      ]
+    },
+    {
+      "id": "liruotao-rice-yogurt",
+      "name": "田园白糯米酸奶",
+      "brand": "李若桃",
+      "category": "酸奶",
+      "priceMin": 14,
+      "priceMax": 20,
+      "praise": "酸奶的酸香配上糯米嚼感，适合想喝得有口感的时候。",
+      "caution": "含乳且口感偏稠，不适合乳糖敏感或想喝清透饮品的人。",
+      "addOnSuggestion": "推荐原配；可询问少糯米。",
+      "flavors": [
+        "奶香",
+        "酸甜",
+        "浓郁",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮",
+        "少咖啡因"
+      ]
+    },
+    {
+      "id": "liruotao-kiwi-cucumber-yogurt",
+      "name": "青瓜猕猴桃白糯米酸奶",
+      "brand": "李若桃",
+      "category": "酸奶",
+      "priceMin": 20,
+      "priceMax": 28,
+      "praise": "青瓜与猕猴桃让酸奶多一层清新的果香。",
+      "caution": "猕猴桃酸度与酸奶乳感都明显，口味偏好需要匹配。",
+      "addOnSuggestion": "推荐原配；可询问少糯米。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "奶香",
+        "清爽"
+      ],
+      "needs": [
+        "适合冰饮",
+        "少咖啡因"
+      ]
+    },
+    {
+      "id": "luckin-americano",
+      "name": "美式咖啡",
+      "brand": "瑞幸",
+      "category": "咖啡",
+      "priceMin": 18,
+      "priceMax": 29,
+      "praise": "咖啡香直接，适合想快速选一杯无奶咖啡的时候。",
+      "caution": "不加奶时苦感较突出，怕苦者可考虑其他款。",
+      "addOnSuggestion": "推荐原配；想柔和可询问是否支持加燕麦奶。",
+      "flavors": [
+        "咖啡香",
+        "清爽"
+      ],
+      "needs": [
+        "可选无糖",
+        "适合热饮",
+        "适合冰饮",
+        "乳糖友好"
+      ]
+    },
+    {
+      "id": "luckin-coconut-latte",
+      "name": "生椰拿铁",
+      "brand": "瑞幸",
+      "category": "咖啡",
+      "priceMin": 22,
+      "priceMax": 35,
+      "praise": "椰香与咖啡香结合，入口比黑咖啡柔和。",
+      "caution": "椰香明显，想喝纯咖啡味的人可能不喜欢。",
+      "addOnSuggestion": "推荐原配，额外加料容易盖住椰香。",
+      "flavors": [
+        "咖啡香",
+        "椰香",
+        "奶香"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "starbucks-latte",
+      "name": "拿铁",
+      "brand": "星巴克",
+      "category": "咖啡",
+      "priceMin": 29,
+      "priceMax": 42,
+      "praise": "咖啡与奶味均衡，想喝温和咖啡时很稳妥。",
+      "caution": "奶味明显，追求浓烈咖啡感的人可能觉得偏柔和。",
+      "addOnSuggestion": "推荐原配；可询问燕麦奶替换。",
+      "flavors": [
+        "咖啡香",
+        "奶香"
+      ],
+      "needs": [
+        "可选无糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "starbucks-cappuccino",
+      "name": "卡布奇诺",
+      "brand": "星巴克",
+      "category": "咖啡",
+      "priceMin": 29,
+      "priceMax": 42,
+      "praise": "奶泡轻盈，咖啡香比普通拿铁更突出。",
+      "caution": "泡沫消散后口感会变化，适合现做现喝。",
+      "addOnSuggestion": "推荐原配，先感受奶泡层次。",
+      "flavors": [
+        "咖啡香",
+        "奶香",
+        "浓郁"
+      ],
+      "needs": [
+        "可选无糖",
+        "适合热饮"
+      ]
+    },
+    {
+      "id": "starbucks-flat-white",
+      "name": "馥芮白",
+      "brand": "星巴克",
+      "category": "咖啡",
+      "priceMin": 31,
+      "priceMax": 44,
+      "praise": "入口绵密，咖啡存在感和奶香都比较清晰。",
+      "caution": "咖啡味偏足，不太适合只想喝甜奶饮的人。",
+      "addOnSuggestion": "推荐原配；想改变奶感可询问植物奶。",
+      "flavors": [
+        "咖啡香",
+        "奶香",
+        "浓郁"
+      ],
+      "needs": [
+        "可选无糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "starbucks-mocha",
+      "name": "摩卡",
+      "brand": "星巴克",
+      "category": "咖啡",
+      "priceMin": 32,
+      "priceMax": 45,
+      "praise": "巧克力香让咖啡更像一杯甜点。",
+      "caution": "甜感和乳感都偏突出，控糖时要留意酱料。",
+      "addOnSuggestion": "可询问少巧克力酱。",
+      "flavors": [
+        "咖啡香",
+        "奶香",
+        "浓郁",
+        "甜品感"
+      ],
+      "needs": [
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "starbucks-vanilla-latte",
+      "name": "香草风味拿铁",
+      "brand": "星巴克",
+      "category": "咖啡",
+      "priceMin": 32,
+      "priceMax": 45,
+      "praise": "香草甜香柔化咖啡苦感，适合入门。",
+      "caution": "风味糖浆的甜度可能高于普通拿铁。",
+      "addOnSuggestion": "可询问少香草糖浆。",
+      "flavors": [
+        "咖啡香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "heytea-strawberry-cheese",
+      "name": "芝芝莓莓",
+      "brand": "喜茶",
+      "category": "果茶",
+      "priceMin": 24,
+      "priceMax": 33,
+      "praise": "莓果酸甜和奶盖形成鲜明层次。",
+      "caution": "奶盖与果味叠加偏浓，想喝清透口感可避开。",
+      "addOnSuggestion": "推荐原配；可询问少奶盖。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮",
+        "奶盖款"
+      ]
+    },
+    {
+      "id": "heytea-grapefruit",
+      "name": "满杯红柚",
+      "brand": "喜茶",
+      "category": "果茶",
+      "priceMin": 22,
+      "priceMax": 31,
+      "praise": "柚香鲜明，适合想喝酸甜果茶的时候。",
+      "caution": "柚子可能带些微苦，怕苦者需要留意。",
+      "addOnSuggestion": "推荐原配；可询问少糖。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮",
+        "乳糖友好"
+      ]
+    },
+    {
+      "id": "heytea-green-grape",
+      "name": "多肉青提",
+      "brand": "喜茶",
+      "category": "果茶",
+      "priceMin": 23,
+      "priceMax": 32,
+      "praise": "青提果香清亮，果肉带来额外口感。",
+      "caution": "果味随原料批次变化，酸甜程度不固定。",
+      "addOnSuggestion": "推荐原配；可询问脆波波。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "heytea-grapefruit-cheese",
+      "name": "芝芝柚柚",
+      "brand": "喜茶",
+      "category": "果茶",
+      "priceMin": 24,
+      "priceMax": 33,
+      "praise": "柚香和奶盖搭配，酸甜中带一点咸香。",
+      "caution": "柚皮微苦与乳感并存，口味比较鲜明。",
+      "addOnSuggestion": "推荐原配；可询问少奶盖。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "奶香"
+      ],
+      "needs": [
+        "适合冰饮",
+        "奶盖款"
+      ]
+    },
+    {
+      "id": "heytea-black-sugar-milk-tea",
+      "name": "烤黑糖波波真乳茶",
+      "brand": "喜茶",
+      "category": "奶茶",
+      "priceMin": 21,
+      "priceMax": 30,
+      "praise": "黑糖香和波波嚼感让整杯很有满足感。",
+      "caution": "甜感与饱腹感都较强，适合当作甜点喝。",
+      "addOnSuggestion": "已有波波，推荐原配；可询问少波波。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "甜品感",
+        "浓郁"
+      ],
+      "needs": [
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "heytea-green-milk-tea",
+      "name": "绿妍轻乳茶",
+      "brand": "喜茶",
+      "category": "奶茶",
+      "priceMin": 18,
+      "priceMax": 27,
+      "praise": "茶香干净，奶感较轻，适合日常饮用。",
+      "caution": "追求浓厚口感的人可能觉得它偏轻。",
+      "addOnSuggestion": "推荐原配，保留茶香。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "mixue-orange",
+      "name": "棒打鲜橙",
+      "brand": "蜜雪冰城",
+      "category": "果茶",
+      "priceMin": 6,
+      "priceMax": 12,
+      "praise": "橙香直接，冰饮时很解腻。",
+      "caution": "果酸较明显，怕酸可留意甜度。",
+      "addOnSuggestion": "推荐原配；可询问少糖。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "mixue-peach-oolong",
+      "name": "蜜桃四季春",
+      "brand": "蜜雪冰城",
+      "category": "果茶",
+      "priceMin": 7,
+      "priceMax": 13,
+      "praise": "蜜桃香和茶香搭配，入口轻快。",
+      "caution": "偏爱真实果肉口感的人可能觉得茶感更突出。",
+      "addOnSuggestion": "可询问加椰果。",
+      "flavors": [
+        "果香",
+        "茶香",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "mixue-pearl-coconut-milk-tea",
+      "name": "珍珠椰果奶茶",
+      "brand": "蜜雪冰城",
+      "category": "奶茶",
+      "priceMin": 8,
+      "priceMax": 14,
+      "praise": "两种加料带来不同嚼感，适合喜欢有料奶茶的人。",
+      "caution": "配料较多，喝起来比基础奶茶更有饱腹感。",
+      "addOnSuggestion": "已有珍珠和椰果，推荐原配。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "mixue-red-bean-milk-tea",
+      "name": "红豆奶茶",
+      "brand": "蜜雪冰城",
+      "category": "奶茶",
+      "priceMin": 8,
+      "priceMax": 14,
+      "praise": "红豆带来绵软口感，适合偏爱谷物甜香的人。",
+      "caution": "红豆会增加甜感与饱腹感。",
+      "addOnSuggestion": "推荐原配；可询问少红豆。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "mixue-grape-taro-balls",
+      "name": "芋圆葡萄",
+      "brand": "蜜雪冰城",
+      "category": "果茶",
+      "priceMin": 8,
+      "priceMax": 15,
+      "praise": "葡萄香配上芋圆嚼感，口味活泼。",
+      "caution": "果味与芋圆组合偏甜点感，不算清透。",
+      "addOnSuggestion": "已有芋圆，推荐原配。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "mixue-strawberry-boba",
+      "name": "草莓啵啵",
+      "brand": "蜜雪冰城",
+      "category": "果茶",
+      "priceMin": 8,
+      "priceMax": 15,
+      "praise": "草莓酸甜和啵啵的口感很适合冰饮。",
+      "caution": "想喝茶味浓的用户可能觉得果味占主导。",
+      "addOnSuggestion": "已有啵啵，推荐原配。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chagee-wanli-mulan",
+      "name": "万里木兰",
+      "brand": "霸王茶姬",
+      "category": "奶茶",
+      "priceMin": 17,
+      "priceMax": 27,
+      "praise": "花香与奶香交织，适合喜欢香气型奶茶的人。",
+      "caution": "花香存在感较高，偏爱纯茶感的人可能不适应。",
+      "addOnSuggestion": "推荐原配，避免加料盖住香气。",
+      "flavors": [
+        "茶香",
+        "花香",
+        "奶香"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chagee-qingqing-nuoshan",
+      "name": "青青糯山",
+      "brand": "霸王茶姬",
+      "category": "奶茶",
+      "priceMin": 17,
+      "priceMax": 27,
+      "praise": "茶香清新，口感比甜口奶茶更轻。",
+      "caution": "想喝浓甜奶茶的人可能觉得它偏淡。",
+      "addOnSuggestion": "推荐原配，先感受茶底。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chagee-xingshi-chunshan",
+      "name": "醒时春山",
+      "brand": "霸王茶姬",
+      "category": "奶茶",
+      "priceMin": 17,
+      "priceMax": 27,
+      "praise": "茶香带有清新的草木感，适合偏茶口味。",
+      "caution": "茶感较突出，怕茶涩可先选其他款。",
+      "addOnSuggestion": "推荐原配；可询问少糖。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chagee-huatian-oolong",
+      "name": "花田乌龙",
+      "brand": "霸王茶姬",
+      "category": "奶茶",
+      "priceMin": 17,
+      "priceMax": 27,
+      "praise": "乌龙茶香较稳，搭配奶感不会太腻。",
+      "caution": "偏爱果味的人可能觉得它比较传统。",
+      "addOnSuggestion": "推荐原配，保留乌龙香。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "浓郁"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chagee-yulong-xianyue",
+      "name": "玉龙衔月",
+      "brand": "霸王茶姬",
+      "category": "奶茶",
+      "priceMin": 17,
+      "priceMax": 28,
+      "praise": "茶与奶的层次温和，适合慢慢喝。",
+      "caution": "茶底有存在感，甜奶爱好者可能需要适应。",
+      "addOnSuggestion": "推荐先喝原配。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "花香"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chagee-xunxiang-shancha",
+      "name": "寻香山茶",
+      "brand": "霸王茶姬",
+      "category": "奶茶",
+      "priceMin": 17,
+      "priceMax": 28,
+      "praise": "花香细腻，适合喜欢清雅茶奶味的人。",
+      "caution": "香气型茶底对口味偏好要求较高。",
+      "addOnSuggestion": "推荐原配，不额外加重口味配料。",
+      "flavors": [
+        "茶香",
+        "花香",
+        "奶香"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chabaidao-taro-balls-milk-tea",
+      "name": "招牌芋圆奶茶",
+      "brand": "茶百道",
+      "category": "奶茶",
+      "priceMin": 15,
+      "priceMax": 23,
+      "praise": "芋圆软糯，整杯有明显的咀嚼乐趣。",
+      "caution": "加料本身有甜度，调低茶底甜度也未必清淡。",
+      "addOnSuggestion": "已有芋圆，推荐原配。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chabaidao-soy-oolong",
+      "name": "豆乳玉麒麟",
+      "brand": "茶百道",
+      "category": "奶茶",
+      "priceMin": 16,
+      "priceMax": 24,
+      "praise": "豆乳香和乌龙茶香叠加，风味比较厚实。",
+      "caution": "豆香明显，偏爱清透果茶的人可避开。",
+      "addOnSuggestion": "推荐原配，先感受豆乳层次。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "浓郁",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chabaidao-grape-jelly",
+      "name": "葡萄冻冻",
+      "brand": "茶百道",
+      "category": "果茶",
+      "priceMin": 16,
+      "priceMax": 24,
+      "praise": "葡萄香和冻冻口感搭配，冰饮时很讨喜。",
+      "caution": "配料口感较多，想喝纯果茶可选择基础款。",
+      "addOnSuggestion": "已有冻冻，推荐原配。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chabaidao-green-grape-jasmine",
+      "name": "青提茉莉",
+      "brand": "茶百道",
+      "category": "果茶",
+      "priceMin": 17,
+      "priceMax": 25,
+      "praise": "青提和茉莉香气都较轻，喝起来清新。",
+      "caution": "果香与花香同时存在，花香敏感者可留意。",
+      "addOnSuggestion": "推荐原配；可询问少糖。",
+      "flavors": [
+        "果香",
+        "花香",
+        "茶香",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chabaidao-strawberry-milk-jelly",
+      "name": "草莓奶冻",
+      "brand": "茶百道",
+      "category": "果茶",
+      "priceMin": 17,
+      "priceMax": 25,
+      "praise": "草莓酸甜加上奶冻，像一杯水果甜点。",
+      "caution": "奶冻带来乳感，不适合想喝清透果茶的人。",
+      "addOnSuggestion": "已有奶冻，推荐原配。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "chabaidao-peach-oolong",
+      "name": "蜜桃乌龙",
+      "brand": "茶百道",
+      "category": "果茶",
+      "priceMin": 15,
+      "priceMax": 23,
+      "praise": "蜜桃甜香与乌龙茶底搭配，适合日常喝。",
+      "caution": "偏好强烈果肉口感的人可能觉得茶味更多。",
+      "addOnSuggestion": "可询问加脆波波。",
+      "flavors": [
+        "果香",
+        "茶香",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "guming-cheese-peach",
+      "name": "超 A 芝士桃桃",
+      "brand": "古茗",
+      "category": "果茶",
+      "priceMin": 18,
+      "priceMax": 26,
+      "praise": "蜜桃果香配芝士顶，甜品感较足。",
+      "caution": "奶盖会让整杯更厚重，怕腻可留意。",
+      "addOnSuggestion": "推荐原配；可询问少芝士顶。",
+      "flavors": [
+        "果香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮",
+        "奶盖款"
+      ]
+    },
+    {
+      "id": "guming-coconut-mango",
+      "name": "椰椰芒芒",
+      "brand": "古茗",
+      "category": "果茶",
+      "priceMin": 17,
+      "priceMax": 25,
+      "praise": "芒果和椰香组合柔和，适合偏爱热带果味。",
+      "caution": "椰香较明显，想喝纯芒果味的人可能不喜欢。",
+      "addOnSuggestion": "推荐原配，先感受两种果香。",
+      "flavors": [
+        "果香",
+        "椰香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "guming-pudding-milk-tea",
+      "name": "布蕾脆脆奶芙",
+      "brand": "古茗",
+      "category": "奶茶",
+      "priceMin": 17,
+      "priceMax": 25,
+      "praise": "布蕾与脆脆丰富了口感，像一杯杯装甜点。",
+      "caution": "甜度和饱腹感都偏高，不适合想喝轻盈口感的人。",
+      "addOnSuggestion": "已有布蕾和脆脆，推荐原配。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "浓郁",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "guming-uncle-milk-tea",
+      "name": "大叔奶茶",
+      "brand": "古茗",
+      "category": "奶茶",
+      "priceMin": 12,
+      "priceMax": 20,
+      "praise": "茶奶味经典，适合想喝熟悉口味的时候。",
+      "caution": "风味较传统，追求新奇果味的人可能觉得平稳。",
+      "addOnSuggestion": "可询问加珍珠。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "浓郁"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "guming-jasmine-milk-tea",
+      "name": "云岭茉莉白",
+      "brand": "古茗",
+      "category": "奶茶",
+      "priceMin": 14,
+      "priceMax": 22,
+      "praise": "茉莉茶香轻盈，奶感相对克制。",
+      "caution": "花香偏明显，喜欢重乳口味的人可能觉得偏轻。",
+      "addOnSuggestion": "推荐原配，保留茉莉香。",
+      "flavors": [
+        "茶香",
+        "花香",
+        "奶香",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "guming-herbal-jelly-milk-tea",
+      "name": "仙草奶茶",
+      "brand": "古茗",
+      "category": "奶茶",
+      "priceMin": 13,
+      "priceMax": 21,
+      "praise": "仙草带来清凉的咀嚼感，搭配经典茶奶底。",
+      "caution": "仙草口感有辨识度，不喜欢配料的人可避开。",
+      "addOnSuggestion": "已有仙草，推荐原配。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "yidiandian-boba-milk-green",
+      "name": "波霸奶绿",
+      "brand": "一点点",
+      "category": "奶茶",
+      "priceMin": 15,
+      "priceMax": 23,
+      "praise": "绿茶底较清爽，波霸增加嚼感。",
+      "caution": "波霸会提升饱腹感，想喝轻口感可少加。",
+      "addOnSuggestion": "已有波霸，推荐原配。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "yidiandian-herbal-milk-tea",
+      "name": "仙草奶茶",
+      "brand": "一点点",
+      "category": "奶茶",
+      "priceMin": 15,
+      "priceMax": 23,
+      "praise": "奶茶加仙草，口感柔软又有层次。",
+      "caution": "仙草风味比较独特，偏爱纯奶茶的人可能不习惯。",
+      "addOnSuggestion": "已有仙草，推荐原配。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "yidiandian-red-bean-milk-tea",
+      "name": "红豆奶茶",
+      "brand": "一点点",
+      "category": "奶茶",
+      "priceMin": 16,
+      "priceMax": 24,
+      "praise": "红豆绵软，适合喜欢谷物甜香的人。",
+      "caution": "红豆本身会带来甜度与饱腹感。",
+      "addOnSuggestion": "已有红豆，推荐原配。",
+      "flavors": [
+        "茶香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "yidiandian-lemon-yakult",
+      "name": "柠檬养乐多",
+      "brand": "一点点",
+      "category": "果茶",
+      "priceMin": 16,
+      "priceMax": 24,
+      "praise": "柠檬酸香和乳酸菌风味搭配，冰饮很醒口。",
+      "caution": "酸味与甜味都明显，控糖时应留意。",
+      "addOnSuggestion": "推荐原配；可询问少糖。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "yidiandian-grapefruit-green-tea",
+      "name": "葡萄柚绿茶",
+      "brand": "一点点",
+      "category": "果茶",
+      "priceMin": 16,
+      "priceMax": 24,
+      "praise": "柚香和绿茶搭配，偏清爽而不厚重。",
+      "caution": "葡萄柚可能带微苦，怕苦者留意。",
+      "addOnSuggestion": "推荐原配；可询问少糖。",
+      "flavors": [
+        "果香",
+        "茶香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮",
+        "乳糖友好"
+      ]
+    },
+    {
+      "id": "yidiandian-passionfruit-green-tea",
+      "name": "百香绿茶",
+      "brand": "一点点",
+      "category": "果茶",
+      "priceMin": 16,
+      "priceMax": 24,
+      "praise": "百香果酸香和绿茶底都较清晰。",
+      "caution": "酸度偏明显，不喜欢酸口可避开。",
+      "addOnSuggestion": "可询问加椰果，增加口感。",
+      "flavors": [
+        "果香",
+        "茶香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮",
+        "乳糖友好"
+      ]
+    },
+    {
+      "id": "nayuki-grape-cheese",
+      "name": "霸气芝士葡萄",
+      "brand": "奈雪的茶",
+      "category": "果茶",
+      "priceMin": 25,
+      "priceMax": 35,
+      "praise": "葡萄果香浓，芝士顶增加咸香层次。",
+      "caution": "奶盖较厚，想喝清透果茶的人可避开。",
+      "addOnSuggestion": "推荐原配；可询问少芝士顶。",
+      "flavors": [
+        "果香",
+        "奶香",
+        "酸甜",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮",
+        "奶盖款"
+      ]
+    },
+    {
+      "id": "nayuki-yangmei",
+      "name": "霸气杨梅",
+      "brand": "奈雪的茶",
+      "category": "果茶",
+      "priceMin": 23,
+      "priceMax": 34,
+      "praise": "杨梅酸甜鲜明，冰饮时很提神。",
+      "caution": "果酸偏明显，怕酸者可以考虑别款。",
+      "addOnSuggestion": "推荐原配；可询问少糖。",
+      "flavors": [
+        "果香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "nayuki-peach",
+      "name": "霸气蜜桃",
+      "brand": "奈雪的茶",
+      "category": "果茶",
+      "priceMin": 23,
+      "priceMax": 34,
+      "praise": "蜜桃香甜柔和，适合想喝果香明显的茶。",
+      "caution": "果香主导，想喝浓茶感的人可能觉得偏甜。",
+      "addOnSuggestion": "推荐原配；可询问少糖。",
+      "flavors": [
+        "果香",
+        "茶香",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "nayuki-mango",
+      "name": "霸气芒果",
+      "brand": "奈雪的茶",
+      "category": "果茶",
+      "priceMin": 23,
+      "priceMax": 34,
+      "praise": "芒果香气饱满，口感偏热带水果。",
+      "caution": "熟果甜感明显，喜欢清淡茶饮的人可避开。",
+      "addOnSuggestion": "推荐原配，先感受芒果香。",
+      "flavors": [
+        "果香",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "nayuki-classic-milk-tea",
+      "name": "奈雪奶茶",
+      "brand": "奈雪的茶",
+      "category": "奶茶",
+      "priceMin": 18,
+      "priceMax": 28,
+      "praise": "茶奶平衡，适合从基础款认识这个品牌。",
+      "caution": "追求丰富果肉或奶盖层次的人可能觉得平实。",
+      "addOnSuggestion": "可询问加珍珠。",
+      "flavors": [
+        "茶香",
+        "奶香"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "nayuki-jasmine-milk-tea",
+      "name": "茉莉初雪",
+      "brand": "奈雪的茶",
+      "category": "奶茶",
+      "priceMin": 19,
+      "priceMax": 29,
+      "praise": "茉莉花香轻盈，奶味不会完全盖住茶。",
+      "caution": "花香较明显，不爱花香的人可先选基础奶茶。",
+      "addOnSuggestion": "推荐原配，保留茉莉香。",
+      "flavors": [
+        "茶香",
+        "花香",
+        "奶香",
+        "清爽"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "liruotao-mango-rice-yogurt",
+      "name": "芒果白糯米酸奶",
+      "brand": "李若桃",
+      "category": "酸奶",
+      "priceMin": 18,
+      "priceMax": 28,
+      "praise": "芒果甜香与糯米嚼感搭配，像一杯小甜点。",
+      "caution": "酸奶含乳且口感偏稠，不适合想喝清爽茶饮的人。",
+      "addOnSuggestion": "推荐原配；可询问少糯米。",
+      "flavors": [
+        "果香",
+        "奶香",
+        "酸甜",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮",
+        "少咖啡因"
+      ]
+    },
+    {
+      "id": "liruotao-strawberry-rice-yogurt",
+      "name": "草莓白糯米酸奶",
+      "brand": "李若桃",
+      "category": "酸奶",
+      "priceMin": 18,
+      "priceMax": 28,
+      "praise": "草莓酸甜让糯米酸奶喝起来更活泼。",
+      "caution": "果酸与乳酸叠加，偏好温和口味的人可留意。",
+      "addOnSuggestion": "推荐原配；可询问少糯米。",
+      "flavors": [
+        "果香",
+        "奶香",
+        "酸甜",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮",
+        "少咖啡因"
+      ]
+    },
+    {
+      "id": "liruotao-blueberry-yogurt",
+      "name": "蓝莓酸奶",
+      "brand": "李若桃",
+      "category": "酸奶",
+      "priceMin": 18,
+      "priceMax": 28,
+      "praise": "蓝莓果香和酸奶的酸香搭配，口感柔和。",
+      "caution": "酸奶含乳，乳糖敏感者需注意。",
+      "addOnSuggestion": "推荐原配；可询问加白糯米。",
+      "flavors": [
+        "果香",
+        "奶香",
+        "酸甜"
+      ],
+      "needs": [
+        "适合冰饮",
+        "少咖啡因"
+      ]
+    },
+    {
+      "id": "liruotao-purple-rice-yogurt",
+      "name": "紫米酸奶",
+      "brand": "李若桃",
+      "category": "酸奶",
+      "priceMin": 16,
+      "priceMax": 26,
+      "praise": "紫米带谷物香和嚼感，饱腹感较强。",
+      "caution": "谷物配料较多，不适合想喝轻盈口感的人。",
+      "addOnSuggestion": "已有紫米，推荐原配。",
+      "flavors": [
+        "奶香",
+        "酸甜",
+        "浓郁",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮",
+        "少咖啡因"
+      ]
+    },
+    {
+      "id": "liruotao-avocado-yogurt",
+      "name": "牛油果酸奶",
+      "brand": "李若桃",
+      "category": "酸奶",
+      "priceMin": 19,
+      "priceMax": 29,
+      "praise": "牛油果让酸奶更绵密，口感偏浓厚。",
+      "caution": "牛油果风味较独特，喜欢清爽果酸的人可能不适应。",
+      "addOnSuggestion": "推荐原配；可询问少糯米。",
+      "flavors": [
+        "奶香",
+        "浓郁",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮",
+        "少咖啡因"
+      ]
+    },
+    {
+      "id": "liruotao-pomelo-mango-yogurt",
+      "name": "杨枝甘露酸奶",
+      "brand": "李若桃",
+      "category": "酸奶",
+      "priceMin": 19,
+      "priceMax": 29,
+      "praise": "芒果与柚香让酸奶更有热带水果感。",
+      "caution": "水果酸甜和酸奶乳感都比较明显。",
+      "addOnSuggestion": "推荐原配；可询问少糯米。",
+      "flavors": [
+        "果香",
+        "奶香",
+        "酸甜",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮",
+        "少咖啡因"
+      ]
+    },
+    {
+      "id": "luckin-cheese-latte",
+      "name": "生酪拿铁",
+      "brand": "瑞幸",
+      "category": "咖啡",
+      "priceMin": 23,
+      "priceMax": 35,
+      "praise": "奶酪香让拿铁更像一杯甜点。",
+      "caution": "乳感和甜感较突出，想喝纯咖啡可避开。",
+      "addOnSuggestion": "推荐原配，额外加料可能掩盖奶酪香。",
+      "flavors": [
+        "咖啡香",
+        "奶香",
+        "浓郁",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "luckin-meteorite-latte",
+      "name": "陨石拿铁",
+      "brand": "瑞幸",
+      "category": "咖啡",
+      "priceMin": 23,
+      "priceMax": 35,
+      "praise": "咖啡奶香搭配有嚼感的配料，层次丰富。",
+      "caution": "有料口感和甜感都较强，不适合想喝纯咖啡的人。",
+      "addOnSuggestion": "已有特色配料，推荐原配。",
+      "flavors": [
+        "咖啡香",
+        "奶香",
+        "甜品感"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "luckin-coconut-cloud-latte",
+      "name": "椰云拿铁",
+      "brand": "瑞幸",
+      "category": "咖啡",
+      "priceMin": 23,
+      "priceMax": 35,
+      "praise": "椰香与绵密口感搭配，咖啡更柔和。",
+      "caution": "椰味明显，不喜欢椰香的人可避开。",
+      "addOnSuggestion": "推荐原配，先感受椰香层次。",
+      "flavors": [
+        "咖啡香",
+        "椰香",
+        "奶香"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "luckin-ice-coconut-latte",
+      "name": "冰吸生椰拿铁",
+      "brand": "瑞幸",
+      "category": "咖啡",
+      "priceMin": 23,
+      "priceMax": 36,
+      "praise": "生椰香和冰感组合，适合想喝清凉咖啡的时候。",
+      "caution": "冰感较强，不适合想喝温热饮品的人。",
+      "addOnSuggestion": "推荐原配；可询问少冰。",
+      "flavors": [
+        "咖啡香",
+        "椰香",
+        "清爽"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "luckin-orange-americano",
+      "name": "橙 C 美式",
+      "brand": "瑞幸",
+      "category": "咖啡",
+      "priceMin": 22,
+      "priceMax": 34,
+      "praise": "柑橘酸香让美式更轻快，适合果咖爱好者。",
+      "caution": "果酸与咖啡苦感并存，口味比较鲜明。",
+      "addOnSuggestion": "推荐原配，先尝试果咖平衡。",
+      "flavors": [
+        "咖啡香",
+        "果香",
+        "酸甜",
+        "清爽"
+      ],
+      "needs": [
+        "适合冰饮"
+      ]
+    },
+    {
+      "id": "luckin-velvet-latte",
+      "name": "丝绒拿铁",
+      "brand": "瑞幸",
+      "category": "咖啡",
+      "priceMin": 22,
+      "priceMax": 34,
+      "praise": "奶香细腻，咖啡苦感比较柔和。",
+      "caution": "追求浓烈黑咖啡感的人可能觉得奶味偏多。",
+      "addOnSuggestion": "推荐原配；可询问少糖。",
+      "flavors": [
+        "咖啡香",
+        "奶香"
+      ],
+      "needs": [
+        "可选少糖",
+        "适合热饮",
+        "适合冰饮"
+      ]
+    }
+  ],
+  "rankings": {
+    "popular": [
+      "chagee-boya",
+      "heytea-grape",
+      "luckin-coconut-latte"
+    ],
+    "lowCal": [
+      "starbucks-americano",
+      "starbucks-cold-brew",
+      "luckin-americano"
+    ],
+    "seasonalInspiration": [
+      "heytea-mango-cheese",
+      "nayuki-strawberry-cheese",
+      "liruotao-kiwi-cucumber-yogurt"
+    ]
+  }
+}

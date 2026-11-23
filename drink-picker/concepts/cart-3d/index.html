@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9f2">
+  <title>杯选 · 立体餐车视觉审核</title>
+  <style>
+    :root { --ink: currentColor; --ink-2: #FF4FD8; --ink-3: #4FF8FF; }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+    body { background: #fff9f2; color: #6b2034; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
+    #scene { width: 100%; height: 100%; }
+    canvas { display: block; }
+    .prop-label { position: fixed; z-index: 2; left: 0; top: 0; pointer-events: none; transform-origin: center; }
+    .prop-label { opacity: 0; visibility: hidden; transition: opacity .16s ease, visibility .16s ease; --ink: #6b2034; --ink-2: #efadc2; }
+    .prop-label.is-visible { opacity: 1; visibility: visible; }
+    .scene-nav { position: fixed; z-index: 4; left: 22px; bottom: 18px; display: flex; gap: 8px; }
+    .scene-nav button { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); border: 0; }
+    .scene-nav button:focus-visible { position: static; width: auto; height: 38px; padding: 0 14px; clip-path: none; border: 2px solid #14433d; border-radius: 5px; background: #fdf7e7; color: #14433d; font: 700 13px/1 'PingFang SC', sans-serif; outline: 3px solid #008b70; outline-offset: 2px; }
+    .library-error { position: fixed; z-index: 25; left: 50%; bottom: 24px; display: flex; align-items: center; gap: 12px; max-width: calc(100vw - 32px); padding: 10px 13px; border: 1px solid #14433d; border-radius: 6px; background: #fdf7e7; color: #14433d; box-shadow: 0 8px 16px #14433d26; font: 700 13px/1.4 'PingFang SC', sans-serif; transform: translateX(-50%); }
+    .library-error[hidden] { display: none; }
+    .library-error button { flex: none; min-height: 30px; padding: 4px 11px; border: 1px solid #14433d; border-radius: 4px; background: #d3e8e3; color: #14433d; font: inherit; cursor: pointer; }
+    .library-error button:focus-visible { outline: 3px solid #008b70; outline-offset: 2px; }
+
+    /* 115 Ribbon-Banner — a folded banner with notched ends sways behind the word */
+    .fx-ribbon {
+      position: relative;
+      isolation: isolate;
+      display: inline-block;
+      padding: .36em 1.35em;
+      font: 800 27px/1.1 Georgia, 'Times New Roman', serif;
+      letter-spacing: .09em;
+      white-space: pre;
+      color: color-mix(in srgb, var(--ink) 28%, #38081f);
+      text-shadow: 0 1px 0 #ffffff5e;
+      animation: fx-ribbon-sway 4.6s ease-in-out infinite;
+    }
+    .fx-ribbon::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--ink-2) 68%, #ffffff) 0%,
+        var(--ink-2) 48%,
+        color-mix(in srgb, var(--ink-2) 58%, #2a0716) 100%
+      );
+      clip-path: polygon(0 0, 100% 0, calc(100% - 18px) 50%, 100% 100%, 0 100%, 18px 50%);
+      box-shadow: inset 0 2px 0 #ffffff66, inset 0 -5px 8px #2a07165e;
+    }
+    /* the folded tails tuck behind each notched end and hang below the band */
+    .fx-ribbon::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        linear-gradient(45deg, color-mix(in srgb, var(--ink-2) 32%, #180310) 50%, transparent 50%) left calc(100% - 5px) / 19px 17px no-repeat,
+        linear-gradient(315deg, color-mix(in srgb, var(--ink-2) 32%, #180310) 50%, transparent 50%) right calc(100% - 5px) / 19px 17px no-repeat;
+      animation: fx-ribbon-tail 4.6s ease-in-out infinite;
+    }
+    @keyframes fx-ribbon-sway {
+      0%, 100% { transform: rotate(-1.4deg) translateY(0); }
+      50% { transform: rotate(1.4deg) translateY(-2px); }
+    }
+    @keyframes fx-ribbon-tail {
+      0%, 100% { transform: translate(-1px, 0); }
+      50% { transform: translate(1px, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fx-ribbon { animation: none; }
+      .fx-ribbon::after { animation: none; }
+      .prop-label { transition: none; }
+    }
+  </style>
+  <script src="three.min.js"></script>
+  <script src="matter.min.js"></script>
+  <link rel="stylesheet" href="menu.css?v=2">
+  <link rel="stylesheet" href="card.css">
+  <link rel="stylesheet" href="tin.css">
+  <link rel="stylesheet" href="gacha.css">
+  <link rel="stylesheet" href="ranking.css">
+  <script src="page-flip.browser.js"></script>
+  <script defer src="scene.js"></script>
+  <script defer src="menu.js?v=3"></script>
+  <script defer src="card.js"></script>
+  <script defer src="tin.js"></script>
+  <script defer src="gacha.js"></script>
+  <script defer src="ranking.js"></script>
+</head>
+<body>
+  <div id="scene" tabindex="-1" aria-label="可点击菜单、扭蛋机、排行榜和收藏铁盒的立体奶茶车"></div>
+  <nav class="scene-nav" aria-label="吧台功能入口">
+    <button type="button" data-scene-open="menu">菜单</button>
+    <button type="button" data-scene-open="gacha">扭蛋机</button>
+    <button type="button" data-scene-open="ranking">排行榜</button>
+    <button type="button" data-scene-open="tin">收藏铁盒</button>
+  </nav>
+  <div id="library-error" class="library-error" role="alert" hidden><span>饮品资料暂时未载入</span><button id="library-retry" type="button">重试</button></div>
+  <div class="prop-label" data-prop="menu" aria-hidden="true"><div class="fx-ribbon">菜单</div></div>
+  <div class="prop-label" data-prop="gacha" aria-hidden="true"><div class="fx-ribbon">扭蛋机</div></div>
+  <div class="prop-label" data-prop="ranking" aria-hidden="true"><div class="fx-ribbon">排行榜</div></div>
+  <div class="prop-label" data-prop="tin" aria-hidden="true"><div class="fx-ribbon">收藏铁盒</div></div>
+  <div id="menu-layer" class="menu-layer" aria-hidden="true">
+    <div class="menu-backdrop" aria-label="关闭菜单"></div>
+    <section class="menu-book" role="dialog" aria-modal="true" aria-label="书本菜单">
+      <div class="menu-cover" aria-hidden="true"><span>DRINK?</span><strong>杯选菜单</strong><small>THE DRINK BOOK</small></div>
+      <div class="menu-open-content">
+        <header class="menu-filters">
+          <div class="menu-heading"><span>DRINK?</span><h1>杯选菜单</h1><span id="menu-count"></span></div>
+          <div class="filter-row"><span class="filter-label">品类</span><div id="category-filters" class="filter-pills"></div></div>
+          <div class="filter-row"><span class="filter-label">品牌</span><div id="brand-filters" class="filter-pills"></div></div>
+          <button id="reset-filters" class="reset-button" type="button">重置筛选</button>
+        </header>
+        <div class="book-stage"><div id="book-pages"></div></div>
+        <div class="page-controls"><button id="page-prev" class="page-corner page-corner-left" type="button" aria-label="翻到上一组饮品" title="上一页">‹</button><span id="page-status" aria-live="polite"></span><button id="page-next" class="page-corner page-corner-right" type="button" aria-label="翻到下一组饮品" title="下一页">›</button></div>
+      </div>
+    </section>
+  </div>
+  <div id="tin-layer" class="tin-layer" hidden aria-hidden="true">
+    <div class="tin-backdrop" aria-label="关闭收藏铁盒"></div>
+    <section class="tin-panel" role="dialog" aria-modal="true" aria-label="收藏铁盒" tabindex="-1">
+      <div class="tin-lid" aria-hidden="true"><div class="tin-lid-face"><span class="tin-emboss">DRINK?</span><span class="tin-lid-name">收藏铁盒</span><span class="tin-emboss">✦ KEEP THE GOOD ONES ✦</span></div></div>
+      <div class="tin-base">
+        <div class="tin-rim"><span>DRINK?</span><h2>收藏铁盒</h2><span id="tin-count"></span></div>
+        <div id="tin-drinks" class="tin-drinks" aria-live="polite"></div>
+      </div>
+    </section>
+  </div>
+  <div id="gacha-layer" class="gacha-layer" hidden aria-hidden="true">
+    <div class="gacha-backdrop" aria-label="关闭扭蛋机"></div>
+    <section class="gacha-panel" role="dialog" aria-modal="true" aria-label="喝什么扭蛋机" tabindex="-1">
+      <div class="gacha-machine">
+        <div class="gacha-dome"><div id="gacha-pool" class="gacha-pool"></div><div class="gacha-glass" aria-hidden="true"></div></div>
+        <div class="gacha-collar" aria-hidden="true"></div>
+        <div class="gacha-body">
+          <div class="gacha-plate"><span>DRINK?</span><strong>喝什么扭蛋机</strong><small id="gacha-count">正在装入饮品</small></div>
+          <div class="gacha-controls"><button id="gacha-filter-open" class="gacha-control" type="button">筛选</button><button id="gacha-start" class="gacha-control gacha-start" type="button" disabled>开始</button></div>
+          <div id="gacha-outlet" class="gacha-outlet" aria-hidden="true"><span></span></div>
+          <p id="gacha-hint" class="gacha-hint" role="status"></p>
+        </div>
+        <div class="gacha-foot" aria-hidden="true"></div>
+      </div>
+      <div id="gacha-results" class="gacha-results" aria-live="polite"><div id="gacha-tray" class="gacha-tray" aria-label="待打开的扭蛋"></div></div>
+    </section>
+    <div id="gacha-filter-layer" class="gacha-filter-layer" hidden>
+      <div class="gacha-filter-backdrop"></div>
+      <section class="gacha-filter-sheet menu-filters" role="dialog" aria-modal="true" aria-label="筛选扭蛋池">
+        <header class="gacha-filter-heading"><span>DRINK?</span><h2>筛选扭蛋池</h2></header>
+        <div id="gacha-filter-groups" class="gacha-filter-groups"></div>
+        <label class="gacha-repeat"><input id="gacha-repeat" type="checkbox" checked><span>允许重复抽到同款</span></label>
+        <div class="gacha-filter-actions"><button id="gacha-filter-reset" class="filter-pill" type="button">清空条件</button><button id="gacha-filter-apply" class="filter-pill" type="button">确认筛选</button></div>
+      </section>
+    </div>
+  </div>
+  <div id="ranking-layer" class="ranking-layer" hidden aria-hidden="true">
+    <div class="ranking-backdrop" aria-label="关闭排行榜"></div>
+    <section class="ranking-board" role="dialog" aria-modal="true" aria-label="口味排行榜" tabindex="-1">
+      <div class="ranking-face">
+        <header class="ranking-header">
+          <span class="ranking-mark">DRINK? / THE SHORTLIST</span>
+          <h2>今天喝什么榜</h2>
+          <p>按口味挑一杯，点开看看值不值得试。</p>
+        </header>
+        <div id="ranking-tabs" class="ranking-tabs" role="tablist" aria-label="切换口味榜"></div>
+        <div id="ranking-content" class="ranking-content" role="tabpanel" aria-live="polite"></div>
+        <footer class="ranking-footer">编辑精选 · 顺序仅供找口味参考 · 价格为演示区间，实际以门店为准</footer>
+      </div>
+    </section>
+  </div>
+  <div id="card-layer" class="card-layer" hidden>
+    <div class="card-backdrop"></div>
+    <article id="drink-card" class="drink-card" role="dialog" aria-modal="true" aria-label="饮品明星小卡"></article>
+    <div id="comment-layer" class="comment-layer" hidden>
+      <div class="comment-backdrop"></div>
+      <form id="comment-form" class="comment-panel" role="dialog" aria-modal="true" aria-label="写饮品评价">
+        <h2>我的饮用评价</h2>
+        <label for="comment-input">写下这杯的味道</label>
+        <textarea id="comment-input" maxlength="500" rows="5"></textarea>
+        <div class="comment-actions"><button type="button" id="comment-cancel">返回小卡</button><button type="submit">保存评价</button></div>
+      </form>
+    </div>
+  </div>
+  <div id="card-toast" class="card-toast" role="status" hidden></div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+.card-layer, .tin-layer {
+  --forest: #14433d;
+  --cream: #fdf7e7;
+  --sage: #d3e8e3;
+  --charcoal: #3a3a3a;
+  --line: #e3e3e3;
+  --teal: #2ad2c9;
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: 'DM Sans', 'PingFang SC', system-ui, sans-serif;
+}
+.tin-layer { z-index: 20; }
+.card-layer { z-index: 30; }
+.card-layer[hidden], .tin-layer[hidden], .comment-layer[hidden], .card-toast[hidden] { display: none; }
+.card-backdrop, .tin-backdrop, .comment-backdrop { position: absolute; inset: 0; background: #14433d42; }
+.drink-card {
+  position: relative;
+  width: min(370px, calc(100vw - 42px));
+  height: min(550px, calc(100dvh - 36px));
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid var(--forest);
+  border-radius: 16px;
+  background: var(--card-color);
+  color: var(--forest);
+  opacity: 0;
+  translate: var(--drag-x, 0px) var(--drag-y, 0px);
+  transform: translateY(15px) scale(.96);
+  transition: opacity .34s ease, transform .34s cubic-bezier(.2,.8,.2,1);
+}
+.card-layer.is-open .drink-card { opacity: 1; transform: translateY(0) scale(1); }
+.card-top { position: relative; flex: none; padding: 22px 24px 10px; touch-action: none; cursor: grab; }
+.card-top:active { cursor: grabbing; }
+.card-kicker { display: flex; align-items: center; gap: 8px; padding-right: 36px; font-size: 11px; font-weight: 700; }
+.card-kicker::before { content: ''; width: 13px; height: 13px; border: 2px solid var(--forest); border-radius: 50%; }
+.card-close { position: absolute; top: 15px; right: 16px; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid var(--forest); border-radius: 50%; background: var(--cream); color: var(--forest); font-size: 22px; line-height: 1; cursor: pointer; }
+.card-title { margin: 17px 0 8px; font: 900 34px/1 'Playfair Display', 'Songti SC', Georgia, serif; overflow-wrap: anywhere; text-wrap: balance; }
+.card-brand { display: block; margin-top: 5px; color: var(--forest); font-size: 13px; font-weight: 600; line-height: 1.4; }
+.card-sparkles { position: absolute; top: 56px; right: 26px; color: #7e0022; font-size: 22px; letter-spacing: 6px; pointer-events: none; }
+.card-star-burst { position: absolute; z-index: 2; right: 28px; bottom: 13px; color: #8a4160; font-size: 18px; pointer-events: none; animation: card-star-burst .72s cubic-bezier(.2,.75,.2,1) both; }
+@keyframes card-star-burst { from { opacity: 0; transform: translateY(8px) scale(.55); } 45% { opacity: 1; } to { opacity: 0; transform: translateY(-18px) scale(1.15); } }
+.card-flavors { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; }
+.has-brand-logo .card-title, .has-brand-logo .card-brand { max-width: calc(100% - 88px); }
+.has-brand-logo .card-flavors { margin-top: 20px; }
+.has-brand-logo .card-sparkles { top: 123px; right: 25px; font-size: 13px; }
+.card-logo { position: absolute; top: 59px; right: 24px; width: 72px; height: 72px; object-fit: cover; border: 1px solid var(--forest); border-radius: 50%; background: var(--cream); }
+.card-flavors span, .card-facts span { display: inline-block; padding: 5px 10px; border: 1px solid var(--forest); border-radius: 50px; background: #ffffffb8; font-size: 11px; font-weight: 700; }
+.card-facts { display: flex; flex: none; gap: 7px; padding: 0 24px 14px; }
+.card-facts span { background: var(--cream); }
+.card-body { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 12px; overflow-y: auto; padding: 4px 24px 14px; }
+.card-copy { padding: 13px 14px; border: 1px solid #14433d38; border-radius: 16px; background: #fdf7e7bd; }
+.card-copy:nth-child(2) { margin-left: 12px; }
+.card-copy:nth-child(3) { margin-right: 12px; }
+.card-copy h3 { margin: 0 0 4px; font-size: 12px; font-weight: 700; }
+.card-copy p { margin: 0; color: var(--charcoal); font-size: 13px; line-height: 1.5; }
+.card-actions { display: flex; gap: 8px; flex: none; padding: 13px 24px 22px; border-top: 1px solid #14433d38; }
+.card-actions button, .comment-actions button, .tin-drinks button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 38px; padding: 7px 13px; border: 1px solid var(--forest); border-radius: 50px; background: var(--cream); color: var(--forest); font-size: 12px; font-weight: 700; cursor: pointer; }
+.card-actions button { flex: 1; }
+.card-actions .is-favorite { background: var(--forest); color: white; }
+.heart-icon { display: inline-grid; place-items: center; width: 18px; height: 18px; font-size: 23px; line-height: 1; }
+.card-layer button:focus-visible, .tin-layer button:focus-visible, .comment-panel textarea:focus-visible { outline: 3px solid #008b70; outline-offset: 2px; }
+.comment-layer { position: absolute; z-index: 4; inset: 0; display: grid; place-items: center; }
+.comment-panel { position: relative; width: min(340px, calc(100vw - 50px)); padding: 22px; border: 2px solid var(--forest); border-radius: 24px; background: var(--cream); color: var(--forest); }
+.comment-panel h2 { margin: 0 0 17px; font: 900 25px/1.1 'Playfair Display', 'Songti SC', Georgia, serif; }
+.comment-panel label { display: block; margin-bottom: 7px; font-size: 13px; font-weight: 700; }
+.comment-panel textarea { display: block; width: 100%; min-height: 130px; padding: 12px; border: 1px solid #008b70; border-radius: 16px; background: white; color: var(--charcoal); resize: vertical; font: 400 14px/1.5 'DM Sans', 'PingFang SC', system-ui, sans-serif; }
+.comment-actions { display: flex; justify-content: end; gap: 8px; margin-top: 15px; }
+.comment-actions button[type="submit"] { background: var(--forest); color: white; }
+.card-toast { position: fixed; z-index: 50; left: 50%; bottom: 24px; padding: 10px 18px; border: 1px solid var(--forest); border-radius: 50px; background: var(--cream); color: var(--forest); font: 700 13px/1.2 'DM Sans', 'PingFang SC', system-ui, sans-serif; transform: translateX(-50%); animation: card-toast-in .28s ease both; }
+.card-toast { display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+.card-toast button { padding: 3px 6px; border: 0; border-bottom: 1px solid currentColor; background: none; color: var(--forest); font: 800 13px/1 'PingFang SC', sans-serif; cursor: pointer; }
+.card-toast button:focus-visible { outline: 3px solid #008b70; outline-offset: 2px; }
+@keyframes card-toast-in { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
+.tin-panel { position: relative; width: min(760px, calc(100vw - 72px)); max-height: calc(100dvh - 96px); min-height: 260px; overflow: auto; padding: 26px; border: 2px solid var(--forest); border-radius: 24px; background: var(--cream); color: var(--forest); }
+.tin-panel header { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 13px; }
+.tin-panel h2 { margin: 0; font: 900 34px/1 'Playfair Display', 'Songti SC', Georgia, serif; }
+.tin-panel header span { font-size: 13px; font-weight: 700; }
+.tin-drinks { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin-top: 16px; }
+.tin-drinks button { justify-content: start; min-height: 80px; padding: 12px; background: var(--card-color); text-align: left; font: 700 20px/1.2 'Playfair Display', 'Songti SC', Georgia, serif; }
+.tin-empty { grid-column: 1 / -1; margin: 28px 0; text-align: center; font-size: 14px; }
+@media (max-width: 650px) { .tin-drinks { grid-template-columns: repeat(2, minmax(0,1fr)); } .drink-card { height: min(550px, calc(100dvh - 24px)); } .card-top { padding-top: 18px; } .card-title { font-size: 30px; } }
+@media (prefers-reduced-motion: reduce) { .drink-card { transition: none; } .card-toast, .card-star-burst { animation: none; } }

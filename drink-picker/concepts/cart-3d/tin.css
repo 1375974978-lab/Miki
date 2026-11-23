@@ -1,0 +1,167 @@
+.tin-layer {
+  z-index: 20;
+  --tin-metal: #b0a18b;
+  --tin-edge: #796c5b;
+  --tin-light: #e0d6c1;
+  --tin-card-scale: .56;
+}
+.tin-backdrop { background: transparent; }
+.tin-panel {
+  position: relative;
+  width: min(810px, calc(100vw - 90px));
+  height: min(625px, calc(100dvh - 60px));
+  min-height: 0;
+  overflow: visible;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  transform: scale(.24) rotate(-5deg);
+  transform-origin: center 68%;
+  opacity: 0;
+  transition: transform .8s cubic-bezier(.18,.8,.25,1), opacity .35s ease;
+  perspective: 1200px;
+}
+.tin-layer.is-open .tin-panel { transform: scale(1) rotate(0); opacity: 1; }
+.tin-base {
+  position: absolute;
+  inset: 140px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 10px solid var(--tin-metal);
+  border-radius: 17px 17px 24px 24px;
+  background: #fdf7e7;
+  box-shadow: inset 0 0 0 2px #fff7e9, 0 16px 25px #4c3a2c30;
+}
+.tin-base::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid #695b4933;
+  border-radius: 6px 6px 14px 14px;
+  pointer-events: none;
+}
+.tin-rim {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex: none;
+  padding: 13px 25px 10px;
+  border-bottom: 1px solid #796c5b59;
+  color: #14433d;
+}
+.tin-rim > span:first-child { font: 900 16px/1 'Playfair Display', Georgia, serif; }
+.tin-rim h2 { margin: 0; font: 900 27px/1 'Playfair Display', 'Songti SC', Georgia, serif; }
+.tin-rim #tin-count { margin-left: auto; font: 700 12px/1.2 'DM Sans', sans-serif; }
+.tin-lid {
+  position: absolute;
+  z-index: 3;
+  left: -2px;
+  right: -2px;
+  top: 140px;
+  height: calc(100% - 140px);
+  transform-origin: center 0;
+  transform: rotateX(0);
+  transition: transform .62s cubic-bezier(.22,.8,.2,1) .07s;
+  backface-visibility: visible;
+  pointer-events: none;
+}
+.tin-layer.is-open .tin-lid { transform: rotateX(-163deg) scaleY(.24); transition-delay: .24s; }
+.tin-layer.is-open .tin-lid-face { background: #e4d8c0; }
+.tin-layer.is-open .tin-lid-face > span { visibility: hidden; }
+.tin-panel:focus { outline: none; }
+.tin-lid-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border: 10px solid var(--tin-edge);
+  border-radius: 18px 18px 26px 26px;
+  background: linear-gradient(125deg, #c9bba3, #e1d5bd 29%, #b4a58e 65%, #d5c9b2);
+  color: #69513e;
+  box-shadow: inset 0 0 0 2px #eee2ce, inset 0 4px 12px #ffffff69, 0 8px 16px #45372926;
+  backface-visibility: visible;
+}
+.tin-lid-face::after { content: ''; position: absolute; inset: 16px; border: 1px solid #fff7e688; border-radius: 11px 11px 17px 17px; }
+.tin-emboss { font: 800 15px/1 'Playfair Display', Georgia, serif; letter-spacing: .1em; }
+.tin-lid-name { font: 900 47px/1.1 'Playfair Display', 'Songti SC', Georgia, serif; text-shadow: 0 1px 0 #fff7eab8; }
+.tin-drinks {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin: 0;
+  padding: 20px 20px 28px;
+  scrollbar-color: #9f8c76 #fdf7e7;
+}
+.tin-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(204px, 1fr)); justify-items: center; gap: 25px 16px; }
+.tin-card-slot { position: relative; width: 210px; height: 316px; transform-origin: center; will-change: transform, opacity; }
+.tin-drinks .tin-card-button { display: block; width: 100%; height: 100%; padding: 0; border: 0; border-radius: 10px; background: none; text-align: left; cursor: pointer; }
+.tin-card-button { transition: translate .22s cubic-bezier(.2,.8,.2,1); }
+.tin-card-button:hover, .tin-card-button:focus-visible { translate: 0 -4px; }
+.tin-drinks .tin-remove { position: absolute; z-index: 2; top: 4px; right: 4px; min-height: 26px; width: 26px; padding: 0; border: 1px solid #14433d; border-radius: 50%; background: #fdf7e7; color: #14433d; font-size: 19px; line-height: 1; opacity: 0; transition: opacity .18s ease, transform .18s ease; }
+.tin-card-slot:hover .tin-remove, .tin-remove:focus-visible { opacity: 1; }
+.tin-remove:active { transform: scale(.9); }
+.tin-card-button:focus-visible { outline: 3px solid #008b70; outline-offset: 4px; }
+.tin-card-face.drink-card {
+  flex: none;
+  width: 370px;
+  height: 550px;
+  opacity: 1;
+  translate: none;
+  transform: scale(var(--tin-card-scale));
+  transform-origin: top left;
+  transition: none;
+  pointer-events: none;
+  box-shadow: 0 8px 18px #3a33253a;
+}
+.tin-card-face .card-actions span { display: inline-flex; align-items: center; justify-content: center; gap: 7px; flex: 1; min-height: 38px; padding: 7px 13px; border: 1px solid var(--forest); border-radius: 50px; background: var(--cream); color: var(--forest); font-size: 12px; font-weight: 700; }
+.tin-card-face .card-actions .is-favorite { background: var(--forest); color: white; }
+.tin-empty {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+  margin: 25px auto;
+  padding: 35px;
+  width: min(390px, 100%);
+  border: 2px dashed #9b7b6e;
+  border-radius: 8px;
+  background: #ffe5d6;
+  color: #14433d;
+  text-align: center;
+  transform: rotate(-2deg);
+}
+.tin-empty .tin-stars { display: block; color: #9c5363; font-size: 38px; line-height: 1; }
+.tin-drinks.just-emptied .tin-stars { animation: tin-last-star .7s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes tin-last-star { 0% { opacity: .3; transform: scale(.7); } 50% { opacity: 1; transform: scale(1.13); } 100% { transform: scale(1); } }
+.tin-empty strong { display: block; font: 900 25px/1.4 'Playfair Display', 'Songti SC', Georgia, serif; }
+.tin-empty p { margin: 0; font: 600 13px/1.5 'DM Sans', 'PingFang SC', sans-serif; }
+.tin-layer:not(.is-open) .tin-card-slot { pointer-events: none; }
+@media (max-width: 650px) {
+  .tin-panel { width: calc(100vw - 28px); height: calc(100dvh - 34px); }
+  .tin-base { top: 100px; }
+  .tin-lid { top: 100px; height: calc(100% - 100px); }
+  .tin-rim { padding: 10px 12px; gap: 7px; }
+  .tin-rim h2 { font-size: 21px; }
+  .tin-rim > span:first-child { font-size: 12px; }
+  .tin-drinks { padding: 15px 8px; }
+  .tin-card-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px 8px; }
+  .tin-card-slot { width: 160px; height: 238px; }
+  .tin-layer { --tin-card-scale: .426; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tin-panel, .tin-lid, .tin-card-button, .tin-remove { transition: none; }
+  .tin-card-slot { transform: none !important; opacity: 1 !important; }
+  .tin-card-button:hover, .tin-card-button:focus-visible { translate: none; }
+  .tin-drinks.just-emptied .tin-stars { animation: none; }
+}

@@ -1,0 +1,87 @@
+.ranking-layer {
+  --rank-ink: #173f38;
+  --rank-cream: #fdf7e7;
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--rank-ink);
+  font-family: 'DM Sans', 'PingFang SC', system-ui, sans-serif;
+}
+.ranking-layer[hidden] { display: none; }
+.ranking-backdrop { position: absolute; inset: 0; }
+.ranking-board {
+  position: relative;
+  width: min(800px, calc(100vw - 90px));
+  height: min(680px, calc(100dvh - 66px));
+  min-height: 0;
+  padding: 11px;
+  border: 2px solid #76644f;
+  border-radius: 9px;
+  background: linear-gradient(120deg, #9c8262, #d1b993 42%, #80694f);
+  box-shadow: 0 16px 25px #3b2b2438, inset 0 0 0 2px #ecdbc0;
+  transform: scale(.24) rotate(-5deg);
+  opacity: 0;
+  transition: transform .78s cubic-bezier(.18,.8,.25,1), opacity .36s ease;
+}
+.ranking-layer.is-open .ranking-board { transform: scale(1) rotate(0); opacity: 1; }
+.ranking-board:focus { outline: none; }
+.ranking-face {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #dac9a5;
+  border-radius: 3px;
+  background: var(--rank-cream);
+}
+.ranking-header { flex: none; padding: 20px 28px 13px; background: #17443d; color: #fdf7e7; }
+.ranking-mark { color: #b9ded0; font: 800 11px/1 'DM Sans', sans-serif; letter-spacing: .11em; }
+.ranking-header h2 { margin: 6px 0 2px; font: 900 31px/1.15 'Playfair Display', 'Songti SC', Georgia, serif; }
+.ranking-header p { margin: 0; color: #dfebe1; font-size: 12px; }
+.ranking-tabs { display: grid; grid-template-columns: repeat(3, 1fr); flex: none; border-bottom: 1px solid #b2b9a7; background: #ebeee1; }
+.ranking-tabs button { min-width: 0; min-height: 45px; border: 0; border-right: 1px solid #c5cab8; border-bottom: 3px solid transparent; background: transparent; color: #435850; font: 800 14px/1 'DM Sans', 'PingFang SC', sans-serif; cursor: pointer; transition: background-color .18s ease, border-color .18s ease; }
+.ranking-tabs button:last-child { border-right: 0; }
+.ranking-tabs button span { margin-right: 8px; font: 800 11px/1 Georgia, serif; opacity: .6; }
+.ranking-tabs button:hover, .ranking-tabs button[aria-selected="true"] { border-bottom-color: #d8a958; background: #fdf7e7; color: var(--rank-ink); }
+.ranking-content { flex: 1; min-height: 0; overflow-y: auto; scrollbar-color: #a5b4a7 var(--rank-cream); }
+.ranking-list-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; padding: 17px 27px 12px; border-bottom: 1px solid #c5d0c0; }
+.ranking-list-index { color: #8e6c3d; font: 800 10px/1 'DM Sans', sans-serif; letter-spacing: .1em; }
+.ranking-list-head h3 { margin: 3px 0 0; font: 800 23px/1.2 'Playfair Display', 'Songti SC', Georgia, serif; }
+.ranking-list-head p { max-width: 260px; margin: 0; color: #52675c; font-size: 11px; line-height: 1.35; text-align: right; }
+.ranking-rows { padding: 0 26px; }
+.ranking-row { display: flex; align-items: center; width: 100%; min-height: 88px; gap: 17px; padding: 9px 0; border: 0; border-bottom: 1px solid #d5d8c8; background: transparent; color: var(--rank-ink); text-align: left; cursor: pointer; transition: transform .2s cubic-bezier(.2,.8,.2,1), background-color .2s ease; }
+.ranking-row:last-child { border-bottom: 0; }
+.ranking-row:hover, .ranking-row:focus-visible { background: #dbe9df70; transform: translateX(3px); }
+.ranking-row:active { background: #dbe9df; }
+.ranking-number { flex: none; width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid #7e9788; border-radius: 50%; background: var(--rank-color); color: #153d35; font: 800 21px/1 Georgia, serif; }
+.ranking-row-copy { display: grid; gap: 3px; flex: 1; min-width: 0; }
+.ranking-row-copy strong { font: 800 18px/1.25 'Playfair Display', 'Songti SC', Georgia, serif; overflow-wrap: anywhere; }
+.ranking-meta { color: #53695d; font-size: 11px; }
+.ranking-meta i { padding: 0 3px; font-style: normal; opacity: .5; }
+.ranking-reason { color: #354b42; font-size: 11px; }
+.ranking-price { flex: none; min-width: 78px; color: #674f31; font: 800 14px/1.2 'DM Sans', sans-serif; text-align: right; white-space: nowrap; }
+.ranking-price small { display: block; margin-top: 3px; font: 600 10px/1 'PingFang SC', sans-serif; }
+.ranking-arrow { flex: none; color: #5e7e70; font-size: 19px; }
+.ranking-footer { flex: none; padding: 10px 20px; border-top: 1px solid #c9ccbb; background: #f2eee0; color: #5b675c; font-size: 10px; text-align: center; }
+.ranking-empty { padding: 30px; text-align: center; }
+.ranking-layer button:focus-visible { outline: 3px solid #008b70; outline-offset: -3px; }
+@media (max-width: 650px) {
+  .ranking-board { width: calc(100vw - 30px); height: min(680px, calc(100dvh - 36px)); padding: 7px; }
+  .ranking-header { padding: 14px 16px 10px; }
+  .ranking-header h2 { font-size: 25px; }
+  .ranking-tabs button { font-size: 12px; }
+  .ranking-tabs button span { margin-right: 3px; }
+  .ranking-list-head { display: block; padding: 13px 15px 9px; }
+  .ranking-list-head h3 { font-size: 20px; }
+  .ranking-list-head p { max-width: none; margin-top: 3px; text-align: left; }
+  .ranking-rows { padding: 0 13px; }
+  .ranking-row { min-height: 92px; gap: 9px; }
+  .ranking-number { width: 35px; height: 35px; font-size: 16px; }
+  .ranking-row-copy strong { font-size: 15px; }
+  .ranking-meta, .ranking-reason { font-size: 10px; }
+  .ranking-price { min-width: 64px; font-size: 11px; }
+  .ranking-arrow { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .ranking-board, .ranking-row, .ranking-tabs button { transition: none; } .ranking-row:hover, .ranking-row:focus-visible { transform: none; } }
