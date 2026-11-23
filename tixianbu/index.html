@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="体线簿是一款竖屏优先的女生塑形训练打卡与身材数据记录工具，数据仅保存在浏览器本地。"
+    />
+    <meta name="theme-color" content="#eef3f1" />
+    <title>训练打卡｜体线簿</title>
+    <link rel="icon" href="assets/icons/dumbbell.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="assets/fonts/SmileySans-Oblique.ttf.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+    <div id="app-shell" class="app-shell">
+      <header class="app-header">
+        <div class="app-header-leading">
+          <button id="back-button" class="back-button" type="button" aria-label="返回上一页" hidden>
+            <span class="icon icon-chevron-left" aria-hidden="true"></span>
+            <span>返回</span>
+          </button>
+          <a class="brand" href="#training" data-route="training" aria-label="返回训练首页">
+            <span class="brand-mark" aria-hidden="true">
+              <span class="icon icon-dumbbell"></span>
+            </span>
+            <span class="brand-copy">
+              <strong>体线簿</strong>
+              <small>训练手帐 · 01</small>
+            </span>
+          </a>
+          <h1 id="app-screen-title" class="app-screen-title" tabindex="-1" hidden></h1>
+        </div>
+
+        <div class="local-badge" title="所有记录只保存在当前浏览器">
+          <span class="icon icon-shield-check" aria-hidden="true"></span>
+          <span>本机保存</span>
+        </div>
+      </header>
+
+      <main id="main-content" class="app-main">
+        <section id="training-view" class="view" aria-label="训练打卡">
+          <div id="training-home-screen" class="app-screen body-space" data-screen="training-home">
+            <div class="space-heading">
+              <p id="today-label" class="eyebrow">今天</p>
+              <h1 id="training-home-title">从身体开始。</h1>
+              <p>拖动旋转，点选要训练的部位。</p>
+            </div>
+
+            <div id="body-stage" class="body-stage">
+              <div class="stage-aura" aria-hidden="true"></div>
+              <div class="stage-orbit stage-orbit-one" aria-hidden="true"></div>
+              <div class="stage-orbit stage-orbit-two" aria-hidden="true"></div>
+              <div id="body-canvas" class="body-canvas" aria-label="可拖动旋转的女性人体模型"></div>
+              <div id="part-list" class="body-hotspots" aria-label="选择训练部位"></div>
+              <div id="model-status" class="model-status" aria-live="polite">
+                <span class="status-dot"></span>
+                正在载入身体模型
+              </div>
+              <div id="hover-target" class="hover-target" hidden></div>
+            </div>
+
+            <div class="space-toolbar">
+              <div class="micro-stats" aria-label="本月训练统计">
+                <span><b id="month-session-count">0</b> 次训练</span>
+                <i aria-hidden="true"></i>
+                <span><b id="month-calories">0</b> 千卡</span>
+              </div>
+            </div>
+            <button id="resume-receipt" class="draft-ticket" type="button" hidden>
+              <span id="draft-ticket-label">待打印清单</span>
+              <span class="icon icon-printer" aria-hidden="true"></span>
+            </button>
+
+            <p class="gesture-hint">
+              <span class="icon icon-arrow-up-right" aria-hidden="true"></span>
+              左右拖动旋转 · 点击身体查看训练知识
+            </p>
+            <p class="storage-note">
+              <span class="icon icon-shield-check" aria-hidden="true"></span>
+              数据仅保存在此浏览器，清除缓存会清空全部记录。
+            </p>
+          </div>
+
+          <section id="part-screen" class="spatial-sheet" data-screen="training-part" aria-hidden="true">
+            <div class="sheet-grip" data-sheet-handle aria-label="下滑收起训练详情" role="button" tabindex="0">
+              <span></span>
+            </div>
+            <div class="sheet-utility">
+              <span id="sheet-step-label">身体知识</span>
+              <span class="dismiss-hint">
+                下滑收起
+                <span class="icon icon-chevron-down" aria-hidden="true"></span>
+              </span>
+            </div>
+
+            <div class="sheet-track">
+              <section id="knowledge-panel" class="sheet-page knowledge-panel" aria-labelledby="active-part-name">
+                <div class="knowledge-heading">
+                  <div id="part-cover" class="knowledge-index">
+                    <span id="part-cover-icon" class="icon icon-dumbbell" aria-hidden="true"></span>
+                  </div>
+                  <div>
+                    <p class="eyebrow">身体聚焦</p>
+                    <h1 id="active-part-name">臀腿</h1>
+                    <p id="part-description">稳定发力，感受臀部与腿部协同。</p>
+                  </div>
+                </div>
+
+                <p id="part-insight" class="part-insight"></p>
+                <ul id="knowledge-points" class="knowledge-points"></ul>
+
+                <button id="enter-training" class="button button-primary sheet-primary" type="button">
+                  进入训练
+                  <span class="icon icon-arrow-up-right" aria-hidden="true"></span>
+                </button>
+                <p class="sheet-note">动作会在当前空间展开，不会跳转页面。</p>
+              </section>
+
+              <section id="action-panel" class="sheet-page action-panel" aria-labelledby="exercise-panel-title">
+                <div class="action-panel-head">
+                  <button id="back-to-knowledge" class="sheet-back" type="button">
+                    <span class="icon icon-chevron-left" aria-hidden="true"></span>
+                    身体知识
+                  </button>
+                  <span id="action-count">4 个动作</span>
+                </div>
+
+                <h2 id="exercise-panel-title">推荐动作</h2>
+                <p id="part-training-focus" class="action-intro"></p>
+
+                <section class="equipment-section compact-equipment" aria-labelledby="equipment-title">
+                  <div class="equipment-heading">
+                    <div>
+                      <h3 id="equipment-title">手边有什么器械？</h3>
+                      <p>可多选，优先推荐匹配动作。</p>
+                    </div>
+                    <span id="equipment-match-count">全部动作</span>
+                  </div>
+                  <div id="equipment-picker" class="equipment-picker" role="group" aria-label="选择可用器械"></div>
+                </section>
+
+                <section class="exercise-panel" aria-label="推荐训练动作">
+                  <div id="exercise-list" class="exercise-list"></div>
+                </section>
+
+                <div class="save-dock">
+                  <div class="save-dock-top">
+                    <label class="date-field date-field-compact">
+                      <span>打卡日期</span>
+                      <input id="training-date" type="date" />
+                    </label>
+                    <div class="session-total" aria-live="polite">
+                      <span>本次预估</span>
+                      <strong><span id="session-calories">0</span> 千卡</strong>
+                      <small id="calorie-basis">体重基准 55 kg（体验值）</small>
+                    </div>
+                  </div>
+                  <div class="save-dock-actions">
+                    <p id="selection-hint">已选 0 个动作 · 约 0 分钟</p>
+                    <button id="save-training" class="button button-primary button-save" type="button" disabled>
+                      打印训练清单
+                      <span class="icon icon-printer" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <div id="calendar-screen" class="calendar-screen" data-screen="training-calendar" hidden>
+            <div class="detail-intro">
+              <p class="eyebrow">训练记录</p>
+              <h1>把坚持摊开来看</h1>
+              <p>点选日期，回看当天的全部训练。</p>
+            </div>
+
+            <section class="calendar-card" aria-labelledby="calendar-month-label">
+              <div class="calendar-toolbar">
+                <button id="prev-month" class="icon-button" type="button" aria-label="查看上个月">
+                  <span class="icon icon-chevron-left" aria-hidden="true"></span>
+                </button>
+                <h2 id="calendar-month-label" aria-live="polite"></h2>
+                <button id="next-month" class="icon-button" type="button" aria-label="查看下个月">
+                  <span class="icon icon-chevron-right" aria-hidden="true"></span>
+                </button>
+                <button id="calendar-today" class="today-button" type="button">
+                  <span class="icon icon-calendar-days" aria-hidden="true"></span>
+                  今天
+                </button>
+              </div>
+              <div class="calendar-weekdays" aria-hidden="true">
+                <span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>
+              </div>
+              <div id="calendar-grid" class="calendar-grid" role="grid" aria-label="训练打卡日历"></div>
+            </section>
+
+            <aside id="day-detail" class="day-detail" aria-live="polite"></aside>
+          </div>
+
+          <section id="receipt-overlay" class="receipt-overlay" aria-hidden="true" inert>
+            <div class="printer-unit" data-receipt-handle aria-hidden="true">
+              <div class="printer-topline">
+                <span class="icon icon-printer"></span>
+                <strong>体线簿 / PRINT</strong>
+                <i></i>
+              </div>
+              <div class="receipt-swipe-hint" role="button" tabindex="0" aria-label="下滑收起训练清单">
+                下滑收起清单
+                <span class="icon icon-chevron-down" aria-hidden="true"></span>
+              </div>
+              <div class="printer-slot"><span></span></div>
+            </div>
+
+            <div class="receipt-scroll">
+              <article id="workout-receipt" class="workout-receipt" aria-label="今日训练清单">
+                <header class="receipt-header print-line" style="--line-index: 0">
+                  <div class="receipt-brand">
+                    <span class="receipt-logo">体</span>
+                    <span><strong>体线簿</strong><small>BODY / TRAINING LOG</small></span>
+                  </div>
+                  <span class="receipt-number">NO. <b id="receipt-number">0001</b></span>
+                </header>
+                <div class="receipt-rule print-line" style="--line-index: 1" aria-hidden="true"></div>
+                <div class="receipt-title-row print-line" style="--line-index: 2">
+                  <div>
+                    <p>今日训练清单</p>
+                    <h2 id="receipt-title">按计划完成每一组</h2>
+                  </div>
+                  <span id="receipt-date"></span>
+                </div>
+
+                <section id="receipt-completion" class="receipt-completion" aria-live="polite" hidden></section>
+                <section id="receipt-items" class="receipt-items" aria-label="训练组数清单"></section>
+
+                <div class="receipt-total print-line" style="--line-index: 20">
+                  <span>计划合计</span>
+                  <strong><b id="receipt-calories">0</b> kcal</strong>
+                </div>
+
+                <div class="receipt-actions print-line" style="--line-index: 21">
+                  <button id="add-more-actions" class="receipt-action receipt-action-secondary" type="button">
+                    <span class="icon icon-plus" aria-hidden="true"></span>
+                    添加动作
+                  </button>
+                  <button id="complete-training" class="receipt-action receipt-action-primary" type="button" disabled>
+                    完成训练
+                    <span class="icon icon-check" aria-hidden="true"></span>
+                  </button>
+                  <button id="finish-receipt" class="receipt-action receipt-action-primary" type="button" hidden>
+                    收好清单
+                    <span class="icon icon-check" aria-hidden="true"></span>
+                  </button>
+                </div>
+
+                <footer class="receipt-footer print-line" style="--line-index: 22">
+                  <span id="receipt-footer-note">勾选每一组后，完成训练。</span>
+                  <span>THANK YOU FOR MOVING</span>
+                </footer>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section id="body-view" class="view" aria-label="身材数据" hidden>
+          <div id="body-home-screen" class="app-screen" data-screen="body-home">
+            <div class="body-heading">
+              <div>
+                <p class="eyebrow">身材趋势</p>
+                <h1 id="body-home-title">身体的变化，<br />慢慢看。</h1>
+              </div>
+              <img src="assets/illustrations/undraw-fitness-stats.svg" alt="" aria-hidden="true" />
+            </div>
+
+            <div class="body-snapshot" aria-label="最新身材数据">
+              <div>
+                <span>最新体重</span>
+                <strong id="latest-weight">--</strong>
+              </div>
+              <div>
+                <span>最新体脂率</span>
+                <strong id="latest-body-fat">--</strong>
+              </div>
+            </div>
+
+            <section class="trend-panel" aria-labelledby="trend-title">
+              <div class="trend-header">
+                <div>
+                  <h2 id="trend-title">变化曲线</h2>
+                  <p>每周固定时间记录，参考性更高。</p>
+                </div>
+                <div class="trend-latest">
+                  <span id="trend-latest-label">最新体重</span>
+                  <strong id="trend-latest-value">暂无</strong>
+                </div>
+              </div>
+
+              <div class="metric-tabs" role="tablist" aria-label="切换趋势指标">
+                <button class="metric-tab is-active" type="button" role="tab" aria-selected="true" data-metric="weight">体重</button>
+                <button class="metric-tab" type="button" role="tab" aria-selected="false" data-metric="bodyFat">体脂</button>
+                <button class="metric-tab" type="button" role="tab" aria-selected="false" data-metric="waist">腰围</button>
+                <button class="metric-tab" type="button" role="tab" aria-selected="false" data-metric="hip">臀围</button>
+              </div>
+
+              <div id="chart-wrap" class="chart-wrap">
+                <div id="trend-chart" class="trend-chart"></div>
+                <div id="chart-tooltip" class="chart-tooltip" role="status" hidden></div>
+              </div>
+            </section>
+
+            <div class="body-actions">
+              <button class="quick-action quick-action-primary" type="button" data-route="body/record">
+                <span class="quick-action-icon"><span class="icon icon-plus" aria-hidden="true"></span></span>
+                <span><strong>记录今天</strong><small>体重、体脂与围度</small></span>
+              </button>
+              <button class="quick-action" type="button" data-route="body/history">
+                <span class="quick-action-icon"><span class="icon icon-history" aria-hidden="true"></span></span>
+                <span><strong>历史记录</strong><small id="history-count">尚无记录</small></span>
+              </button>
+              <button class="quick-action" type="button" data-route="body/milestones">
+                <span class="quick-action-icon"><span class="icon icon-flag" aria-hidden="true"></span></span>
+                <span><strong>训练里程碑</strong><small>在趋势上留下注释</small></span>
+              </button>
+            </div>
+
+            <p class="storage-note">
+              <span class="icon icon-shield-check" aria-hidden="true"></span>
+              数据仅保存在此浏览器，清除缓存会清空全部记录。
+            </p>
+          </div>
+
+          <div id="body-record-screen" class="app-screen detail-screen" data-screen="body-record" hidden>
+            <div class="detail-intro">
+              <p class="eyebrow">新记录</p>
+              <h1>记录今天</h1>
+              <p>建议每周固定时间记录，每日小幅波动参考性有限。</p>
+            </div>
+
+            <form id="measurement-form" class="measurement-form" novalidate>
+              <label class="date-field">
+                <span>记录日期</span>
+                <input id="measurement-date" name="date" type="date" required />
+              </label>
+
+              <div class="form-grid">
+                <label class="number-field">
+                  <span>体重 <em>必填</em></span>
+                  <span class="input-with-unit">
+                    <input id="weight" name="weight" type="number" min="20" max="300" step="0.1" inputmode="decimal" required />
+                    <span>kg</span>
+                  </span>
+                </label>
+
+                <label class="number-field">
+                  <span>体脂率 <em>必填</em></span>
+                  <span class="input-with-unit">
+                    <input id="body-fat" name="bodyFat" type="number" min="3" max="70" step="0.1" inputmode="decimal" required />
+                    <span>%</span>
+                  </span>
+                </label>
+
+                <label class="number-field">
+                  <span>腰围 <em class="optional">选填</em></span>
+                  <span class="input-with-unit">
+                    <input id="waist" name="waist" type="number" min="35" max="250" step="0.1" inputmode="decimal" />
+                    <span>cm</span>
+                  </span>
+                </label>
+
+                <label class="number-field">
+                  <span>臀围 <em class="optional">选填</em></span>
+                  <span class="input-with-unit">
+                    <input id="hip" name="hip" type="number" min="45" max="250" step="0.1" inputmode="decimal" />
+                    <span>cm</span>
+                  </span>
+                </label>
+              </div>
+
+              <p class="form-hint">同一日期再次保存，会更新该日记录。</p>
+              <p id="measurement-error" class="form-error" role="alert"></p>
+
+              <button class="button button-primary form-submit" type="submit">
+                保存身材记录
+                <span class="icon icon-check" aria-hidden="true"></span>
+              </button>
+            </form>
+          </div>
+
+          <div id="body-history-screen" class="app-screen detail-screen" data-screen="body-history" hidden>
+            <div class="detail-intro">
+              <p class="eyebrow">历史记录</p>
+              <h1>每一次测量</h1>
+              <p>按日期回看，也可以删除录错的数据。</p>
+            </div>
+
+            <div class="history-list-head">
+              <span>全部记录</span>
+              <strong id="history-detail-count">0 条</strong>
+            </div>
+            <div id="history-body" class="history-list"></div>
+          </div>
+
+          <div id="body-milestones-screen" class="app-screen detail-screen" data-screen="body-milestones" hidden>
+            <div class="detail-intro">
+              <p class="eyebrow">趋势注释</p>
+              <h1>训练里程碑</h1>
+              <p>记下值得记住的节点，它会出现在趋势图上。</p>
+            </div>
+
+            <form id="milestone-form" class="milestone-form">
+              <label class="date-field">
+                <span>里程碑日期</span>
+                <input id="milestone-date" type="date" required />
+              </label>
+              <label class="number-field">
+                <span>这一刻想记住什么</span>
+                <input id="milestone-label" type="text" maxlength="30" placeholder="例如：规律臀腿训练启动" required />
+              </label>
+              <p id="milestone-error" class="form-error" role="alert"></p>
+              <button class="button button-primary form-submit" type="submit">
+                标记到曲线
+                <span class="icon icon-check" aria-hidden="true"></span>
+              </button>
+            </form>
+
+            <div class="milestone-history">
+              <div class="history-list-head">
+                <span>已标记</span>
+                <strong id="milestone-count">0 个</strong>
+              </div>
+              <div id="milestone-list" class="milestone-list"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="主要页面">
+        <button class="nav-tab is-active" type="button" data-view-link="training" aria-controls="training-view">
+          <span class="icon icon-dumbbell" aria-hidden="true"></span>
+          <span>训练</span>
+        </button>
+        <button class="nav-tab" type="button" data-view-link="body" aria-controls="body-view">
+          <span class="icon icon-chart-spline" aria-hidden="true"></span>
+          <span>身材</span>
+        </button>
+        <button class="nav-tab" type="button" data-view-link="calendar" aria-controls="calendar-screen">
+          <span class="icon icon-calendar-days" aria-hidden="true"></span>
+          <span>日历</span>
+        </button>
+      </nav>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <noscript>
+      <div class="noscript">体线簿需要启用 JavaScript 才能保存和读取本地记录。</div>
+    </noscript>
+
+    <script src="assets/vendor/three.min.js"></script>
+    <script src="assets/vendor/GLTFLoader.js"></script>
+    <script src="assets/vendor/confetti.browser.js"></script>
+    <script>
+      if (location.protocol === "file:") {
+        document.write('<script src="assets/models/woman-base-light.glb.js"><\/script>');
+      }
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>
